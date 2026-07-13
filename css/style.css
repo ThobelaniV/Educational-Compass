@@ -310,7 +310,7 @@ section{ padding: 120px 0; }
   align-items: center;
 }
 .about-figure{
-  aspect-ratio: 6/5;
+  aspect-ratio: 6/4;
   border-radius: 2px;
   position: relative;
   overflow: hidden;
