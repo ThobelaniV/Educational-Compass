@@ -252,4 +252,77 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---- Gallery tabs ---- */
+  const galleryTabs = document.querySelectorAll('.gallery-tab');
+  if (galleryTabs.length) {
+    galleryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const panelId = tab.dataset.panel;
+        galleryTabs.forEach(t => {
+          t.classList.toggle('active', t === tab);
+          t.setAttribute('aria-selected', String(t === tab));
+        });
+        document.querySelectorAll('.gallery-panel').forEach(panel => {
+          panel.classList.toggle('active', panel.id === `panel-${panelId}`);
+        });
+      });
+    });
+  }
+
+  /* ---- Lightbox for gallery images ---- */
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    const lightboxImg = lightbox.querySelector('.lightbox-img');
+    const counter = lightbox.querySelector('.lightbox-counter');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn = lightbox.querySelector('.lightbox-prev');
+    const nextBtn = lightbox.querySelector('.lightbox-next');
+
+    const groups = {};
+    document.querySelectorAll('[data-lightbox]').forEach(item => {
+      const group = item.dataset.lightbox;
+      if (!groups[group]) groups[group] = [];
+      groups[group].push(item.getAttribute('href'));
+    });
+
+    let currentGroup = null;
+    let currentIndex = 0;
+
+    const show = (group, index) => {
+      const items = groups[group];
+      if (!items || !items.length) return;
+      currentGroup = group;
+      currentIndex = (index + items.length) % items.length;
+      lightboxImg.src = items[currentIndex];
+      counter.textContent = `${currentIndex + 1} / ${items.length}`;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('[data-lightbox]').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        show(item.dataset.lightbox, parseInt(item.dataset.index, 10) || 0);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', () => show(currentGroup, currentIndex - 1));
+    nextBtn.addEventListener('click', () => show(currentGroup, currentIndex + 1));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') show(currentGroup, currentIndex - 1);
+      if (e.key === 'ArrowRight') show(currentGroup, currentIndex + 1);
+    });
+  }
+
 });
