@@ -27,7 +27,7 @@ EducationalCompass/
 
 - Scrollspy nav highlighting as you move through the home page sections.
 - Animated count-up on the "700+ tutorials" / "10+ partner schools" stats.
-- Live countdown timer to the Math & Science Leadership Camp (29 Sept 2026).
+- Live countdown timer to the Math & Science Leadership Camp (30 Jan 2027).
 - Working `mailto:`, `tel:` and WhatsApp (`wa.me`) links throughout — nothing is a dead link.
 - Floating WhatsApp button + a "back to top" button on every page.
 - Contact form validates client-side, then opens the visitor's email app with the message
