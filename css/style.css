@@ -314,6 +314,11 @@ section{ padding: 120px 0; }
   border-radius: 2px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, rgba(15,61,145,0.07) 0%, rgba(15,61,145,0) 70%), var(--light-gray);
+  border: 1px solid rgba(11,11,11,0.08);
 }
 .about-figure svg{
   position: absolute;
@@ -323,6 +328,16 @@ section{ padding: 120px 0; }
   height: 62%;
   opacity: 0.9;
 }
+.about-logo{
+  width: 58%;
+  max-width: 260px;
+  filter: drop-shadow(0 12px 24px rgba(15,61,145,0.16));
+}
+.contact-figure{
+  aspect-ratio: 16/9;
+  margin-top: 4px;
+}
+.contact-figure .about-logo{ width: 42%; max-width: 180px; }
 .about-copy h2{ font-size: clamp(30px, 3.4vw, 40px); }
 .about-stats{
   display: grid;
@@ -387,8 +402,10 @@ section{ padding: 120px 0; }
 .events{ background: var(--white); }
 .events-grid{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 28px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 .event-card{
   border: 1px solid var(--light-gray);
@@ -416,6 +433,71 @@ section{ padding: 120px 0; }
   gap: 6px;
 }
 .events-footer{ text-align: center; margin-top: 52px; }
+
+/* Featured event card */
+.event-card-featured{ padding: 40px; }
+
+.countdown{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 24px 0 28px;
+  max-width: 420px;
+}
+.countdown-box{
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 14px 6px;
+  border-radius: 2px;
+}
+.countdown-num{
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 26px;
+  color: var(--white);
+  font-variant-numeric: tabular-nums;
+}
+.countdown-label{
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+}
+.countdown.is-past .countdown-box{ background: var(--navy); }
+
+.event-includes-label{
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+.event-includes{
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 8px 28px;
+}
+.event-includes li{
+  position: relative;
+  padding-left: 18px;
+  font-size: 14.5px;
+  color: var(--dark-gray);
+}
+.event-includes li::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 1.5px;
+  background: var(--navy);
+}
+.event-cta{ margin-top: 26px; }
 
 /* Contact preview (home) */
 .contact-preview{
@@ -655,6 +737,57 @@ form{ display: flex; flex-direction: column; gap: 22px; }
   height: 32px;      /* adjust to taste */
   width: auto;
   object-fit: contain;
-  /* if your logo is a dark/black PNG and needs to read on a black bg: */
-  /* filter: brightness(0) invert(1); */
+  background: var(--white);
+  border-radius: 50%;
+  padding: 3px;
+}
+
+/* ===========================================================
+   Floating actions — WhatsApp + back to top
+   =========================================================== */
+.whatsapp-fab,
+.back-to-top{
+  position: fixed;
+  right: 26px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 900;
+  box-shadow: 0 10px 30px rgba(11,11,11,0.28);
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.whatsapp-fab{
+  bottom: 26px;
+  background: var(--navy);
+  color: var(--white);
+}
+.whatsapp-fab svg{ width: 26px; height: 26px; }
+.whatsapp-fab:hover{ background: var(--navy-light); transform: translateY(-3px); }
+
+.back-to-top{
+  bottom: 92px;
+  background: var(--white);
+  color: var(--navy);
+  border: 1px solid var(--light-gray);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+.back-to-top svg{ width: 20px; height: 20px; }
+.back-to-top.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.back-to-top:hover{ border-color: var(--navy); transform: translateY(-3px); }
+
+@media (max-width: 720px){
+  .whatsapp-fab, .back-to-top{ width: 48px; height: 48px; right: 18px; }
+  .whatsapp-fab{ bottom: 18px; }
+  .back-to-top{ bottom: 78px; }
+  .countdown{ max-width: none; }
+  .event-includes{ grid-template-columns: 1fr; }
 }

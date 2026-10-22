@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Educational Compass - So others may be educated</title>
 <meta name="description" content="Educational Compass helps students discover educational opportunities, career pathways, and the skills needed for tomorrow's world.">
+<link rel="icon" type="image/png" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
 <header class="navbar">
   <div class="container nav-inner">
     <a href="index.html" class="logo">
-      <img src="images/logo.jpeg" alt="" class="logo-img">
+      <img src="images/logo.png" alt="Educational Compass logo" class="logo-img">
       Educational Compass
     </a>
     <nav>
@@ -28,7 +29,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -54,13 +55,16 @@
       <a href="#about" class="btn btn-outline">Learn More</a>
     </div>
   </div>
+  <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+    <span class="line"></span> Scroll
+  </a>
 </section>
 
 <!-- ============ ABOUT ============ -->
 <section class="about" id="about">
   <div class="container about-grid">
     <div class="about-figure reveal">
-      <img src="images/logo.png" alt="" class="about-figure reveal">
+      <img src="images/logo.png" alt="Educational Compass logo — a compass rose rising from an open book" class="about-logo">
     </div>
     <div class="about-copy reveal">
       <div class="bearing">000° - About Us</div>
@@ -68,9 +72,9 @@
       <p>Educational Compass is a tutoring company dedicated to helping students build confidence and excel in Mathematics and Science. Through personalized tutoring, exam preparation, and engaging learning experiences, we equip learners with the knowledge and skills they need to achieve academic success.</p>
       <p>Every student's learning journey is unique. Our role is to provide the guidance, support, and encouragement they need to master challenging concepts, improve their performance, and reach their full potential.</p>
       <div class="about-stats">
-        <div><div class="stat-num">700+</div><div class="stat-label">Private and Group Tutorials</div></div>
+        <div><div class="stat-num"><span class="count" data-target="700">0</span>+</div><div class="stat-label">Private and Group Tutorials</div></div>
         <div><div class="stat-num">2 out of 2</div><div class="stat-label">Successful Camps Run</div></div>
-        <div><div class="stat-num">10+</div><div class="stat-label">Partner Schools</div></div>
+        <div><div class="stat-num"><span class="count" data-target="10">0</span>+</div><div class="stat-label">Partner Schools</div></div>
       </div>
     </div>
   </div>
@@ -129,28 +133,36 @@
     <div class="section-head reveal">
       <div class="bearing">180° - Upcoming Events</div>
       <h2>Where to Find Us Next</h2>
-      <p>Learners join the 3 day Math and Science leadership camp for a once-off fee of R1800. </b>
-      For enquiries, complete the form on the <link><a href="contact.html" style="color: #1E3A8A;">contact</a> section.
+      <p>Learners join the 3 day Math and Science leadership camp for a once-off fee of R1800.
+      For enquiries, complete the form on the <a href="contact.html" style="color: #1E3A8A;">contact</a> section.
       </p>
     </div>
     <div class="events-grid">
-      <div class="event-card reveal">
-        <div class="event-date">29 September 2026 - 01 October 2026</div>
-        <h3>Math & Science Leadership Camp 2026</h3>
-        <p2>Includes:<br>
-          -Tutoring: Pre-Tests & Post-Tests<br>
-          -Treasure Hunt<br>
-          -Drumming<br>
-          -Waterslides & Swimming<br>
-          -And Many More...
-        </p2>
-        <div class="event-loc"> Location: Parys, Free State<br>
+      <div class="event-card event-card-featured reveal">
+        <div class="event-date">29 September 2026 – 01 October 2026</div>
+        <h3>Math &amp; Science Leadership Camp 2026</h3>
+
+        <div class="countdown" data-target-date="2026-09-29T08:00:00+02:00" aria-live="polite">
+          <div class="countdown-box"><span class="countdown-num" data-unit="days">00</span><span class="countdown-label">Days</span></div>
+          <div class="countdown-box"><span class="countdown-num" data-unit="hours">00</span><span class="countdown-label">Hours</span></div>
+          <div class="countdown-box"><span class="countdown-num" data-unit="minutes">00</span><span class="countdown-label">Minutes</span></div>
+          <div class="countdown-box"><span class="countdown-num" data-unit="seconds">00</span><span class="countdown-label">Seconds</span></div>
+        </div>
+
+        <p class="event-includes-label">Includes:</p>
+        <ul class="event-includes">
+          <li>Tutoring: Pre-Tests &amp; Post-Tests</li>
+          <li>Treasure Hunt</li>
+          <li>Drumming</li>
+          <li>Waterslides &amp; Swimming</li>
+          <li>And Many More...</li>
+        </ul>
+        <div class="event-loc">
+          Location: Parys, Free State<br>
           Pickup: 8am at various Pickup Points
         </div>
+        <a href="contact.html" class="btn btn-primary event-cta">Register Your Interest</a>
       </div>
-    </div>
-    <div class="events-footer reveal">
-      <a href="#events" class="btn btn-outline-dark">View All Events</a>
     </div>
   </div>
 </section>
@@ -162,23 +174,20 @@
     <div class="cp-details">
       <div class="cp-item">
         <div class="label">Email</div>
-        <a href="mail to">info@educationalcompass.co.za</a>
+        <a href="mailto:info@educationalcompass.co.za">info@educationalcompass.co.za</a>
       </div>
       <div class="cp-item">
         <div class="label">Phone</div>
-        <a href="Call">+27 84 909 1065</a>
+        <a href="tel:+27849091065">+27 84 909 1065</a>
       </div>
       <div class="cp-item">
         <div class="label">WhatsApp</div>
-        <a href="Message">+27 81 517 3195</a>
+        <a href="https://wa.me/27815173195" target="_blank" rel="noopener noreferrer">+27 81 517 3195</a>
       </div>
       <div class="cp-item">
         <div class="label">Facebook</div>
-        <a href="https://www.facebook.com/officialeducationalcompass" target="_blank" rel="noopener noreferrer">
-        officialeducationalcompass
-      </a>
+        <a href="https://www.facebook.com/officialeducationalcompass" target="_blank" rel="noopener noreferrer">officialeducationalcompass</a>
       </div>
-      
     </div>
     <a href="contact.html" class="btn btn-primary">Contact Us</a>
   </div>
@@ -189,7 +198,7 @@
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="images/logo.jpeg" alt="" class="logo-img">
+        <img src="images/logo.png" alt="Educational Compass logo" class="logo-img">
         Educational Compass
       </div>
       <ul class="footer-links">
@@ -201,10 +210,18 @@
       </ul>
     </div>
     <div class="footer-bottom">
-      <div>© 2017 Educational Compass</div>
+      <div>© <span id="year"></span> Educational Compass</div>
     </div>
   </div>
 </footer>
+
+<!-- ============ FLOATING ACTIONS ============ -->
+<a class="whatsapp-fab" href="https://wa.me/27815173195?text=Hi%20Educational%20Compass%2C%20I%27d%20like%20some%20more%20information." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0 0 12.04 2zm5.78 14.09c-.24.68-1.19 1.24-1.95 1.4-.52.11-1.2.2-3.48-.75-2.92-1.21-4.8-4.18-4.95-4.37-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 2 .88 2.15.07.14.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.13-.28.28-.12.55.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.46.21.53.33.07.12.07.7-.17 1.38z"/></svg>
+</a>
+<button class="back-to-top" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
 
 <script src="js/script.js"></script>
 </body>
